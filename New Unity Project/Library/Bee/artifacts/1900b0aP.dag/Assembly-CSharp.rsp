@@ -311,7 +311,11 @@
 -r:"Library/Bee/artifacts/1900b0aP.dag/Unity.VisualScripting.Flow.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aP.dag/Unity.VisualScripting.State.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aP.dag/UnityEngine.UI.ref.dll"
-"Assets/TransparentWindow.cs"
+"Assets/Resources/Script/Change_ImageTexture.cs"
+"Assets/Resources/Script/ImageFileOpen.cs"
+"Assets/Resources/Script/TimelineControl.cs"
+"Assets/Resources/Script/Timer.cs"
+"Assets/Resources/Script/TransparentWindow.cs"
 -langversion:9.0
 
 /deterministic
