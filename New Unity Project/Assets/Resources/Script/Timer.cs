@@ -6,9 +6,10 @@ using UnityEngine.UI;
 public class Timer : MonoBehaviour
 {
     private const int SECONDS = 60; // 秒
-    private float CountTime = 0; // カウントアップ用の変数
+    [SerializeField]
     private int MaxTime = 1;
     private int MinutesTime = 0;
+    private float CountTime = 0; // カウントアップ用の変数
     private bool StopFlag = false;
 
     // Start is called before the first frame update

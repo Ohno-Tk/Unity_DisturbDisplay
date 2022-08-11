@@ -22,10 +22,10 @@ public class FileOpen : MonoBehaviour
         Debug.Log(filePath);*/
 
         //パスの取得
-        var path = EditorUtility.OpenFilePanel("Image files", "", "png,jpg");
+        /*var path = EditorUtility.OpenFilePanel("Image files", "", "png,jpg");
         if (string.IsNullOrEmpty(path))
             return;
-        Debug.Log(path);
+        Debug.Log(path);*/
 
         //読み込み
         /*var reader = new StreamReader(path);
