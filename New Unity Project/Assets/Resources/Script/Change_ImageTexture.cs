@@ -26,6 +26,7 @@ public class Change_ImageTexture : MonoBehaviour
         }
     }
 
+    // スプライト変更
     public void ChangeSprite()
     {
         image.sprite = sprite;

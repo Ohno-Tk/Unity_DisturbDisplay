@@ -254,6 +254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62c57151fa2eccb42ac28d1276ffee45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxTime: 1
 --- !u!4 &405345652
 Transform:
   m_ObjectHideFlags: 0
@@ -302,10 +303,10 @@ PlayableDirector:
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
   m_SceneBindings:
-  - key: {fileID: 6161427588838657664, guid: 6f8de946ebb195b4f9c70d50ed43c969, type: 2}
-    value: {fileID: 0}
   - key: {fileID: 734841264593130999, guid: 6f8de946ebb195b4f9c70d50ed43c969, type: 2}
     value: {fileID: 0}
+  - key: {fileID: 1041567385292110841, guid: 6f8de946ebb195b4f9c70d50ed43c969, type: 2}
+    value: {fileID: 1828601342}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &422319912
@@ -335,6 +336,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 968b25b59c90aa3489b6b333bb17e1ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TimerObject: {fileID: 405345650}
 --- !u!1 &782628375
 GameObject:
   m_ObjectHideFlags: 0
@@ -498,8 +500,9 @@ GameObject:
   - component: {fileID: 1828601338}
   - component: {fileID: 1828601337}
   - component: {fileID: 1828601341}
+  - component: {fileID: 1828601342}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Image_CM
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -545,8 +548,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: eb4757b2124007c46b16543f8651f07e, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -576,3 +579,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tex: {fileID: 2800000, guid: 389a95e258db2634887fe5df453935e5, type: 3}
+--- !u!95 &1828601342
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1828601335}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
