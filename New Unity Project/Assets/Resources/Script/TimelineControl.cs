@@ -17,6 +17,7 @@ public class TimelineControl : MonoBehaviour
         {
             Time = TimerObject.GetComponent<Timer>();
             Playabledirector = GetComponent<PlayableDirector>();
+            Playabledirector.stopped += OnPlayableDirectorStopped;
         }
         catch
         {
@@ -25,16 +26,25 @@ public class TimelineControl : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnPlayableDirectorStopped(PlayableDirector aDirector)
     {
-        if (Time.GetStopFlag() == true) {
-
-            PlayTimeline();
-
+        if (Playabledirector == aDirector)
+        {
+            Time.SetStopFlag(false);
+            Debug.Log("PlayableDirector named " + aDirector.name + " is now stopped.");
         }
     }
 
+    // Update is called once per frame
+    void Update()
+    {
+        if (Time.GetStopFlag() == true)
+        {
+            PlayTimeline();
+        }
+    }
+
+    // タイムラインスタート
     public void PlayTimeline()
     {
         Playabledirector.Play();

@@ -7,7 +7,7 @@ public class Timer : MonoBehaviour
 {
     private const int SECONDS = 60; // 秒
     [SerializeField]
-    private int MaxTime = 1;
+    private float MaxTime = 1.0f;
     private int MinutesTime = 0;
     private float CountTime = 0; // カウントアップ用の変数
     private bool StopFlag = false;
@@ -15,7 +15,7 @@ public class Timer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        MinutesTime = MaxTime * SECONDS;
+        MinutesTime = (int)(MaxTime * SECONDS);
     }
 
     // Update is called once per frame
@@ -29,13 +29,19 @@ public class Timer : MonoBehaviour
             StopFlag = true;
             return;
         }
+        else
+        {
+            CountTime += Time.deltaTime;
 
-        CountTime += Time.deltaTime;
-
-        Debug.Log("タイマー：" + (int)CountTime);
+            Debug.Log("タイマー：" + (int)CountTime);
+        }
     }
 
-    //
+    public void SetStopFlag(bool value)
+    {
+        StopFlag = value;
+    }
+
     public bool GetStopFlag()
     {
         return StopFlag;
