@@ -7,24 +7,28 @@ public class Timer : MonoBehaviour
 {
     private const int SECONDS = 60; // 秒
     [SerializeField]
-    private GameObject TimeRangeMinSlider;
-    [SerializeField]
-    private GameObject TimeRangeMaxSlider;
-    [SerializeField]
     private int TimeRangeMin = 4; // ランダム範囲最小値
     [SerializeField]
     private int TimeRangeMax = 7; // ランダム範囲最大値
     [SerializeField]
-    private float MaxTime = 1.0f;
+    private float MaxTime = 0.1f;
     private int MinutesTime = 0; // 分計算用変数
     private float CountTime = 0; // カウントアップ用の変数
     private bool StopFlag = false;
 
+    // Getter/Setter
+    public bool GetSetStopFlag
+    {
+        get{return StopFlag;}
+        set{StopFlag = value;}
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        //MinutesTime = (int)(MaxTime * SECONDS);
-        ChangeMinutesTime();
+        StopFlag = false;
+        MinutesTime = (int)(MaxTime * SECONDS);
+        //ChangeMinutesTime();
     }
 
     // Update is called once per frame
@@ -44,26 +48,6 @@ public class Timer : MonoBehaviour
 
             Debug.Log("タイマー：" + (int)CountTime);
         }
-    }
-
-    public void SetTimeRangeMin()
-    {
-        TimeRangeMin = (int)TimeRangeMinSlider.GetComponent<SliderNumericDelimiter>().Delimiter();
-    }
-
-    public void SetTimeRangeMax()
-    {
-        TimeRangeMax = (int)TimeRangeMaxSlider.GetComponent<SliderNumericDelimiter>().Delimiter();;
-    }
-
-    public void SetStopFlag(bool value)
-    {
-        StopFlag = value;
-    }
-
-    public bool GetStopFlag()
-    {
-        return StopFlag;
     }
 
     // ランダム要素で判定用の分タイムを変更する
