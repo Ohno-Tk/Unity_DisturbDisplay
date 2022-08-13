@@ -6,9 +6,6 @@ using System.IO;
 
 public class Change_ImageTexture : MonoBehaviour
 {
-    private string path = Application.dataPath + "/TextureList.txt";
-    private List<string> TexturePathList;
-    private List<Texture2D> Texture2DList;
     private List<Sprite> SpriteList;
     private Image image;
     private int TextureIndex = 0;
@@ -18,8 +15,6 @@ public class Change_ImageTexture : MonoBehaviour
     {
         try
         {
-            TexturePathList = new List<string>();
-            Texture2DList = new List<Texture2D>();
             SpriteList = new List<Sprite>();
             image = GetComponent<Image>();
         }
@@ -32,30 +27,6 @@ public class Change_ImageTexture : MonoBehaviour
             UnityEngine.Application.Quit();
 #endif
         }
-
-        // テキストファイル読み込み
-        LoadText();
-
-        // テクスチャ読み込み
-        foreach(string i in TexturePathList)
-        {
-            Texture2D tex = Resources.Load<Texture2D>(i);
-            Debug.Log(tex);
-            Texture2DList.Add(tex);
-        }
-
-        // スプライト生成
-        Sprite sprite = null;
-        foreach(Texture2D j in Texture2DList)
-        {
-            sprite = CreateSprite(j);
-            SpriteList.Add(sprite);
-        }
-
-        Debug.Log("スプライトテクスチャ総数；" + SpriteList.Count);
-
-        // スプライト変更
-        ReplaceSprite(SpriteList[0]);
     }
 
     // スプライト変更
@@ -79,23 +50,40 @@ public class Change_ImageTexture : MonoBehaviour
         return TextureIndex;
     }
 
-    // テキストファイル読み込み
-    private void LoadText()
+    public void DebugSpriteCount()
     {
-        string file = "";
-        var filesystem = new StreamReader(path, System.Text.Encoding.GetEncoding("UTF-8"));
+        Debug.Log("スプライトテクスチャ総数；" + SpriteList.Count);
+    }
 
-        // 1行ずつ読み込む
-        while (filesystem.Peek() != -1)
-        {
-            file = filesystem.ReadLine();
-            Debug.Log(file);
-            TexturePathList.Add(file);
-        }
+    public void ListAllClear()
+    {
+        SpriteList.Clear();
+    }
+
+    // スプライト作成
+    public void CreateSprite(string imagePath)
+    {
+        // バイナリで読み込み
+        FileStream fileStream = new FileStream(imagePath, FileMode.Open, FileAccess.Read);
+        BinaryReader bin = new BinaryReader(fileStream);
+        byte[] values = bin.ReadBytes((int)bin.BaseStream.Length);
+
+        bin.Close();
+
+        // Texture2D生成
+        Texture2D texture = new Texture2D(1, 1);
+        texture.LoadImage(values);
+
+        // Sprite生成
+        Sprite sprite = Texture2DConvertSprite(texture);
+        SpriteList.Add(sprite);
+
+        // スプライト変更
+        ReplaceSprite(SpriteList[0]);
     }
 
     // Texture2DからSpriteを作成
-    private Sprite CreateSprite(Texture2D tex)
+    private Sprite Texture2DConvertSprite(Texture2D tex)
     {
         return Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), Vector2.zero);
     }
