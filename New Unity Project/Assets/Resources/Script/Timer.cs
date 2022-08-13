@@ -7,6 +7,10 @@ public class Timer : MonoBehaviour
 {
     private const int SECONDS = 60; // 秒
     [SerializeField]
+    private GameObject TimeRangeMinSlider;
+    [SerializeField]
+    private GameObject TimeRangeMaxSlider;
+    [SerializeField]
     private int TimeRangeMin = 4; // ランダム範囲最小値
     [SerializeField]
     private int TimeRangeMax = 7; // ランダム範囲最大値
@@ -19,7 +23,8 @@ public class Timer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        MinutesTime = (int)(MaxTime * SECONDS);
+        //MinutesTime = (int)(MaxTime * SECONDS);
+        ChangeMinutesTime();
     }
 
     // Update is called once per frame
@@ -33,12 +38,22 @@ public class Timer : MonoBehaviour
             StopFlag = true;
             return;
         }
-        else
+        else if(Mathf.Approximately(Time.timeScale, 1f))
         {
             CountTime += Time.deltaTime;
 
             Debug.Log("タイマー：" + (int)CountTime);
         }
+    }
+
+    public void SetTimeRangeMin()
+    {
+        TimeRangeMin = (int)TimeRangeMinSlider.GetComponent<SliderNumericDelimiter>().Delimiter();
+    }
+
+    public void SetTimeRangeMax()
+    {
+        TimeRangeMax = (int)TimeRangeMaxSlider.GetComponent<SliderNumericDelimiter>().Delimiter();;
     }
 
     public void SetStopFlag(bool value)
@@ -57,7 +72,7 @@ public class Timer : MonoBehaviour
         MaxTime = Random.Range(TimeRangeMin, TimeRangeMax+1);
         MinutesTime = (int)(MaxTime * SECONDS);
 
-        Debug.Log("タイム判定変数更新したよ～" + (MinutesTime/SECONDS) + "分");
+        Debug.Log("タイム判定変数更新したよ～" + (MinutesTime/SECONDS) + "分　" + MinutesTime + "秒");
     }
 
     // タイマーチェック
