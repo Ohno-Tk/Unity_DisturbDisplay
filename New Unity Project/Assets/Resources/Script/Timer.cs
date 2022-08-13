@@ -27,8 +27,8 @@ public class Timer : MonoBehaviour
     void Start()
     {
         StopFlag = false;
-        MinutesTime = (int)(MaxTime * SECONDS);
-        //ChangeMinutesTime();
+        //MinutesTime = (int)(MaxTime * SECONDS);
+        ChangeMinutesTime();
     }
 
     // Update is called once per frame
@@ -57,6 +57,18 @@ public class Timer : MonoBehaviour
         MinutesTime = (int)(MaxTime * SECONDS);
 
         Debug.Log("タイム判定変数更新したよ～" + (MinutesTime/SECONDS) + "分　" + MinutesTime + "秒");
+    }
+
+    // タイマー取得(分)
+    public int GetTimeMinutes()
+    {
+        return (int)(MinutesTime/SECONDS);
+    }
+
+    // 現在のタイマー取得
+    public int GetNowTime()
+    {
+        return (int)CountTime;
     }
 
     // タイマーチェック

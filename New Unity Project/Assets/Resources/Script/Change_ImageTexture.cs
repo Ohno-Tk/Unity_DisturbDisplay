@@ -11,6 +11,7 @@ public class Change_ImageTexture : MonoBehaviour
     private List<Texture2D> Texture2DList;
     private List<Sprite> SpriteList;
     private Image image;
+    private int TextureIndex = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +26,11 @@ public class Change_ImageTexture : MonoBehaviour
         catch
         {
             Debug.Log("Change_ImageTexture.csでERRORとなりました。");
+#if UNITY_EDITOR
             UnityEditor.EditorApplication.isPaused = true;
+#elif UNITY_STANDALONE
+            UnityEngine.Application.Quit();
+#endif
         }
 
         // テキストファイル読み込み
@@ -39,10 +44,10 @@ public class Change_ImageTexture : MonoBehaviour
             Texture2DList.Add(tex);
         }
 
-        Sprite sprite;
+        // スプライト生成
+        Sprite sprite = null;
         foreach(Texture2D j in Texture2DList)
         {
-            // スプライト生成
             sprite = CreateSprite(j);
             SpriteList.Add(sprite);
         }
@@ -62,11 +67,16 @@ public class Change_ImageTexture : MonoBehaviour
     // スプライト変更 ランダム
     public void RandomReplaceSprite()
     {
-        int random = Random.Range(0, SpriteList.Count);
+        TextureIndex = Random.Range(0, SpriteList.Count);
 
-        Debug.Log("ランダムテクスチャ：" + random);
+        Debug.Log("ランダムテクスチャ：" + TextureIndex);
 
-        image.sprite = SpriteList[random];
+        image.sprite = SpriteList[TextureIndex];
+    }
+
+    public int GetTextureIndex()
+    {
+        return TextureIndex;
     }
 
     // テキストファイル読み込み

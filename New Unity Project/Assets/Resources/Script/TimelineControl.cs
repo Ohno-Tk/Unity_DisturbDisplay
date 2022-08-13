@@ -22,7 +22,11 @@ public class TimelineControl : MonoBehaviour
         catch
         {
             Debug.Log("TimelineControl.csでERRORとなりました。");
+#if UNITY_EDITOR
             UnityEditor.EditorApplication.isPaused = true;
+#elif UNITY_STANDALONE
+            UnityEngine.Application.Quit();
+#endif
         }
 
         Playabledirector = GetComponent<PlayableDirector>();
@@ -44,7 +48,7 @@ public class TimelineControl : MonoBehaviour
         if (Playabledirector == director)
         {
             Time.GetSetStopFlag = false;
-            //Time.ChangeMinutesTime();
+            Time.ChangeMinutesTime();
             Image_CMObject.GetComponent<Change_ImageTexture>().RandomReplaceSprite();
             Debug.Log("PlayableDirector named " + director.name + " is now stopped.");
         }
