@@ -7,8 +7,12 @@ public class Timer : MonoBehaviour
 {
     private const int SECONDS = 60; // 秒
     [SerializeField]
+    private int TimeRangeMin = 4; // ランダム範囲最小値
+    [SerializeField]
+    private int TimeRangeMax = 7; // ランダム範囲最大値
+    [SerializeField]
     private float MaxTime = 1.0f;
-    private int MinutesTime = 0;
+    private int MinutesTime = 0; // 分計算用変数
     private float CountTime = 0; // カウントアップ用の変数
     private bool StopFlag = false;
 
@@ -47,12 +51,21 @@ public class Timer : MonoBehaviour
         return StopFlag;
     }
 
+    // ランダム要素で判定用の分タイムを変更する
+    public void ChangeMinutesTime()
+    {
+        MaxTime = Random.Range(TimeRangeMin, TimeRangeMax+1);
+        MinutesTime = (int)(MaxTime * SECONDS);
+
+        Debug.Log("タイム判定変数更新したよ～" + (MinutesTime/SECONDS) + "分");
+    }
+
     // タイマーチェック
     private bool CheckOverTime()
     {
         if( MinutesTime < (int)CountTime)
         {
-            Debug.Log("上限超えたよ～");
+            Debug.Log("タイム超過したよ～");
             return true;
         }
 

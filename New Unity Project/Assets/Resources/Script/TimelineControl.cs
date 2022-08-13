@@ -31,6 +31,7 @@ public class TimelineControl : MonoBehaviour
         if (Playabledirector == aDirector)
         {
             Time.SetStopFlag(false);
+            Time.ChangeMinutesTime();
             Debug.Log("PlayableDirector named " + aDirector.name + " is now stopped.");
         }
     }
