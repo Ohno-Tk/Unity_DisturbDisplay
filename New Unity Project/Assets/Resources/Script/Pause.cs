@@ -8,7 +8,7 @@ public class Pause : MonoBehaviour
     private KeyCode KeyPause = KeyCode.F1;
     [SerializeField]
     private GameObject PauseUIObject;
-    private bool PauseFlag = false;
+    private bool PauseFlag = true;
 
     // Update is called once per frame
     void Update()
@@ -16,10 +16,10 @@ public class Pause : MonoBehaviour
         if (Input.GetKeyDown(KeyPause))
         {
             PauseFlag = !PauseFlag;
-            PauseUIObject.SetActive(PauseFlag);
             Debug.Log("ポーズフラグ：" + PauseFlag);
-
         }
+
+        PauseUIObject.SetActive(PauseFlag);
 
         if(PauseFlag == true)
         {

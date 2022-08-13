@@ -8,7 +8,7 @@ public class DebugRoomKey : MonoBehaviour
     private KeyCode KeyDebug = KeyCode.F2;
     [SerializeField]
     private GameObject DebugUI;
-    private bool DebugFlag = false;
+    private bool DebugFlag = true;
 
     // Update is called once per frame
     void Update()
@@ -16,9 +16,9 @@ public class DebugRoomKey : MonoBehaviour
         if (Input.GetKeyDown(KeyDebug))
         {
             DebugFlag = !DebugFlag;
-            DebugUI.SetActive(DebugFlag);
             Debug.Log("デバッグフラグ：" + DebugFlag);
-
         }
+
+        DebugUI.SetActive(DebugFlag);
     }
 }
