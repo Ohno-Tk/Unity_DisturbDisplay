@@ -1,8 +1,13 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - Application_Quit
     - Change_ImageTexture
-    - ImageFileOpen
+    - DebugNowTime
+    - DebugRoomKey
+    - DebugTextureIndex
+    - DebugTime
+    - Pause
     - TimelineControl
     - Timer
     Unity.Rider.Editor.dll:
@@ -20,8 +25,10 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -33,6 +40,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
+    - UnityEngine.UI.Text
   serializedClasses:
     Unity.Timeline:
     - UnityEngine.Timeline.AudioClipProperties
@@ -43,6 +51,7 @@ ScriptsOnlyBuild:
     UnityEngine.CoreModule:
     - UnityEngine.Events.PersistentCallGroup
     UnityEngine.UI:
+    - UnityEngine.UI.FontData
     - UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
   methodsToPreserve: []
   sceneClasses:
@@ -55,19 +64,11 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 21
       Script: {instanceID: 0}
-    - Class: 23
-      Script: {instanceID: 0}
     - Class: 28
-      Script: {instanceID: 0}
-    - Class: 33
-      Script: {instanceID: 0}
-    - Class: 43
       Script: {instanceID: 0}
     - Class: 48
       Script: {instanceID: 0}
-    - Class: 64
-      Script: {instanceID: 0}
-    - Class: 65
+    - Class: 74
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
@@ -75,41 +76,61 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 89
       Script: {instanceID: 0}
+    - Class: 91
+      Script: {instanceID: 0}
+    - Class: 95
+      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1594}
+      Script: {instanceID: 1596}
     - Class: 114
-      Script: {instanceID: 1758}
+      Script: {instanceID: 1760}
     - Class: 114
-      Script: {instanceID: 1804}
+      Script: {instanceID: 1806}
     - Class: 114
-      Script: {instanceID: 2662}
+      Script: {instanceID: 2664}
     - Class: 114
-      Script: {instanceID: 2682}
+      Script: {instanceID: 2684}
     - Class: 114
-      Script: {instanceID: 2686}
+      Script: {instanceID: 2688}
     - Class: 114
-      Script: {instanceID: 2888}
+      Script: {instanceID: 2890}
     - Class: 114
-      Script: {instanceID: 3676}
+      Script: {instanceID: 3678}
     - Class: 114
-      Script: {instanceID: 5054}
+      Script: {instanceID: 5056}
     - Class: 114
-      Script: {instanceID: 5926}
+      Script: {instanceID: 5342}
     - Class: 114
-      Script: {instanceID: 6426}
+      Script: {instanceID: 5534}
     - Class: 114
-      Script: {instanceID: 7096}
+      Script: {instanceID: 5592}
     - Class: 114
-      Script: {instanceID: 7582}
+      Script: {instanceID: 5932}
     - Class: 114
-      Script: {instanceID: 23098}
+      Script: {instanceID: 6432}
+    - Class: 114
+      Script: {instanceID: 7102}
+    - Class: 114
+      Script: {instanceID: 7588}
+    - Class: 114
+      Script: {instanceID: 7712}
+    - Class: 114
+      Script: {instanceID: 23038}
+    - Class: 114
+      Script: {instanceID: 25304}
+    - Class: 114
+      Script: {instanceID: 25884}
     - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
       Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
     - Class: 196
+      Script: {instanceID: 0}
+    - Class: 213
       Script: {instanceID: 0}
     - Class: 222
       Script: {instanceID: 0}
@@ -158,7 +179,7 @@ ScriptsOnlyBuild:
     className: Selectable
   - hash:
       serializedVersion: 2
-      Hash: 751e5bae2a317288c2ab58d66687092b
+      Hash: 13a321b10036608c51effb1f5eda2d20
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: TimelineControl
@@ -170,7 +191,7 @@ ScriptsOnlyBuild:
     className: Shadow
   - hash:
       serializedVersion: 2
-      Hash: 9460e22843c7e206aaafa1ba2859823a
+      Hash: 751e5bae2a317288c2ab58d66687092b
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Change_ImageTexture
@@ -626,6 +647,12 @@ ScriptsOnlyBuild:
     className: TMP_FontAsset
   - hash:
       serializedVersion: 2
+      Hash: 75ed79e57a51959e3785de0427c27916
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: DebugRoomKey
+  - hash:
+      serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
@@ -636,6 +663,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UIElements
     className: PanelEventHandler
+  - hash:
+      serializedVersion: 2
+      Hash: e820e726408af848c285ffd776749b1c
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Pause
   - hash:
       serializedVersion: 2
       Hash: be140ea01a11255b651c097661ac55b1
@@ -848,10 +881,16 @@ ScriptsOnlyBuild:
     className: ScrollRect
   - hash:
       serializedVersion: 2
-      Hash: 751e5bae2a317288c2ab58d66687092b
+      Hash: a288eecc1441c90098f3b7e84c3ce34a
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Timer
+  - hash:
+      serializedVersion: 2
+      Hash: 58b576daec68031a2771582dbeadb0e6
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Application_Quit
   - hash:
       serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
@@ -897,6 +936,12 @@ ScriptsOnlyBuild:
   - hash:
       serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: FileOpen
+  - hash:
+      serializedVersion: 2
+      Hash: 751e5bae2a317288c2ab58d66687092b
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: UnityOnToggleValueChangedMessageListener
@@ -920,10 +965,22 @@ ScriptsOnlyBuild:
     className: UnityOnSliderValueChangedMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 751e5bae2a317288c2ab58d66687092b
+      Hash: aba3a744c800c681d7b8ac62e7c165e9
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: ImageFileOpen
+    className: DebugTime
+  - hash:
+      serializedVersion: 2
+      Hash: aba3a744c800c681d7b8ac62e7c165e9
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: DebugNowTime
+  - hash:
+      serializedVersion: 2
+      Hash: c2a94bc4464f326df4580fea7bc4acda
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: DebugTextureIndex
   platform: 19
   scenePathNames:
   - Assets/Resources/Scenes/SampleScene.unity
