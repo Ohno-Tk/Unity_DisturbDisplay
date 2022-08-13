@@ -359,6 +359,8 @@
 "Assets/Resources/Script/Change_ImageTexture.cs"
 "Assets/Resources/Script/FileOpen.cs"
 "Assets/Resources/Script/SettingUISwitching.cs"
+"Assets/Resources/Script/SliderNumericDelimiter.cs"
+"Assets/Resources/Script/TextMinutesView.cs"
 "Assets/Resources/Script/TimelineControl.cs"
 "Assets/Resources/Script/Timer.cs"
 "Assets/Resources/Script/TransparentWindow.cs"

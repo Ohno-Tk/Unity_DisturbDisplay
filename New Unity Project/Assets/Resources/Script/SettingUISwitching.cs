@@ -5,6 +5,8 @@ using UnityEngine;
 public class SettingUISwitching : MonoBehaviour
 {
     [SerializeField]
+    private GameObject SettingUI;
+    [SerializeField]
     private KeyCode Key = KeyCode.F1;
     private bool SettingUIDisplay = false;
 
@@ -13,8 +15,17 @@ public class SettingUISwitching : MonoBehaviour
     {
         if (Input.GetKeyDown(Key))
         {
-            SettingUIDisplay = !SettingUIDisplay;
-            Debug.Log("設定画面表示非表示：" + SettingUIDisplay);
+            try
+            {
+                SettingUIDisplay = !SettingUIDisplay;
+                SettingUI.SetActive(SettingUIDisplay);
+                Debug.Log("設定画面表示非表示：" + SettingUIDisplay);
+            }
+            catch
+            {
+                Debug.Log("SettingUISwitching.csでERRORとなりました。");
+                UnityEditor.EditorApplication.isPaused = true;
+            }
         }
     }
 }

@@ -21,9 +21,6 @@ public class Change_ImageTexture : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-        }
     }
 
     // スプライト変更
