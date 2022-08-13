@@ -7,6 +7,8 @@ public class TimelineControl : MonoBehaviour
 {
     [SerializeField]
     private GameObject TimerObject;
+    [SerializeField]
+    private GameObject Image_CMObject;
     private Timer Time;
     private PlayableDirector Playabledirector;
 
@@ -16,32 +18,35 @@ public class TimelineControl : MonoBehaviour
         try
         {
             Time = TimerObject.GetComponent<Timer>();
-            Playabledirector = GetComponent<PlayableDirector>();
-            Playabledirector.stopped += OnPlayableDirectorStopped;
         }
         catch
         {
             Debug.Log("TimelineControl.csでERRORとなりました。");
             UnityEditor.EditorApplication.isPaused = true;
         }
-    }
 
-    void OnPlayableDirectorStopped(PlayableDirector aDirector)
-    {
-        if (Playabledirector == aDirector)
-        {
-            Time.SetStopFlag(false);
-            Time.ChangeMinutesTime();
-            Debug.Log("PlayableDirector named " + aDirector.name + " is now stopped.");
-        }
+        Playabledirector = GetComponent<PlayableDirector>();
+        Playabledirector.stopped += OnPlayableDirectorStopped;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Time.GetStopFlag() == true)
+        if (Time.GetSetStopFlag == true)
         {
             PlayTimeline();
+        }
+    }
+
+    // TimeLineが終了したら
+    private void OnPlayableDirectorStopped(PlayableDirector director)
+    {
+        if (Playabledirector == director)
+        {
+            Time.GetSetStopFlag = false;
+            //Time.ChangeMinutesTime();
+            Image_CMObject.GetComponent<Change_ImageTexture>().RandomReplaceSprite();
+            Debug.Log("PlayableDirector named " + director.name + " is now stopped.");
         }
     }
 
