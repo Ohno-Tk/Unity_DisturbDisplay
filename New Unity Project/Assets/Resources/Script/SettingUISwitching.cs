@@ -7,25 +7,27 @@ public class SettingUISwitching : MonoBehaviour
     [SerializeField]
     private GameObject SettingUI;
     [SerializeField]
-    private KeyCode Key = KeyCode.F1;
-    private bool SettingUIDisplay = false;
+    private KeyCode KeySetting = KeyCode.F1;
+    private bool PauseFlag = true;
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(Key))
+        if (Input.GetKeyDown(KeySetting))
         {
-            try
-            {
-                SettingUIDisplay = !SettingUIDisplay;
-                SettingUI.SetActive(SettingUIDisplay);
-                Debug.Log("設定画面表示非表示：" + SettingUIDisplay);
-            }
-            catch
-            {
-                Debug.Log("SettingUISwitching.csでERRORとなりました。");
-                UnityEditor.EditorApplication.isPaused = true;
-            }
+            PauseFlag = !PauseFlag;
+            SettingUI.SetActive(PauseFlag);
+            Debug.Log("ポーズフラグ：" + PauseFlag);
+
+        }
+
+        if(PauseFlag == true)
+        {
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            Time.timeScale = 1f;
         }
     }
 }

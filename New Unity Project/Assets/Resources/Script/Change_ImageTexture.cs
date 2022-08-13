@@ -18,11 +18,6 @@ public class Change_ImageTexture : MonoBehaviour
         //sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), Vector2.zero);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
     // スプライト変更
     public void ChangeSprite()
     {
