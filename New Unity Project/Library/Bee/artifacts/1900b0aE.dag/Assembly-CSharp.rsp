@@ -363,6 +363,7 @@
 "Assets/Resources/Script/DebugRoomKey.cs"
 "Assets/Resources/Script/DebugTextureIndex.cs"
 "Assets/Resources/Script/DebugTime.cs"
+"Assets/Resources/Script/Debug_ShowTImeline.cs"
 "Assets/Resources/Script/FileOpen.cs"
 "Assets/Resources/Script/Pause.cs"
 "Assets/Resources/Script/TimelineControl.cs"

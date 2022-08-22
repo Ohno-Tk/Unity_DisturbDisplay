@@ -112,6 +112,7 @@
 -define:ENABLE_LEGACY_INPUT_MANAGER
 -define:CSHARP_7_OR_LATER
 -define:CSHARP_7_3_OR_NEWER
+-r:"Assets/Plugins/System.Windows.Forms.dll"
 -r:"D:/programming/Unity_Tool_DisturbDisplay/New Unity Project/Library/PackageCache/com.unity.nuget.newtonsoft-json@3.0.2/Runtime/AOT/Newtonsoft.Json.dll"
 -r:"D:/programming/Unity_Tool_DisturbDisplay/New Unity Project/Library/PackageCache/com.unity.visualscripting@1.7.8/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll"
 -r:"D:/Unity/2022.1.10f1/Editor/Data/NetStandard/compat/2.1.0/shims/netfx/mscorlib.dll"
@@ -317,11 +318,11 @@
 "Assets/Resources/Script/DebugRoomKey.cs"
 "Assets/Resources/Script/DebugTextureIndex.cs"
 "Assets/Resources/Script/DebugTime.cs"
+"Assets/Resources/Script/Debug_ShowTImeline.cs"
 "Assets/Resources/Script/FileOpen.cs"
 "Assets/Resources/Script/Pause.cs"
 "Assets/Resources/Script/TimelineControl.cs"
 "Assets/Resources/Script/Timer.cs"
-"Assets/Resources/Script/TransparentWindow.cs"
 -langversion:9.0
 
 /deterministic
