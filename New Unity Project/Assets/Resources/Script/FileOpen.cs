@@ -26,23 +26,29 @@ public class FileOpen : MonoBehaviour
 
     public void Open()
     {
-        //パスの取得
-        var path = EditorUtility.OpenFilePanel("Image files", "", "png,jpg");
-        if (string.IsNullOrEmpty(path)){return;}
+        var dlg = new OpenFileDialog();
+        dlg.Filter = "png(*.png)|*.png|jpg(*.jpg)|*.jpg|All files(*.*)|*.*";
+        dlg.CheckFileExists = false;
+        if (dlg.ShowDialog() == DialogResult.OK)
+        {
+            //  ...
+            //MessageBox.Show(dlg.FileName);
 
-        Debug.Log("ファイルパス名：" + path);
-        Debug.Log("ファイル名：" + System.IO.Path.GetFileName(path));
+            string path = dlg.FileName;
+            Debug.Log("ファイルパス名：" + path);
+            Debug.Log("ファイル名：" + System.IO.Path.GetFileName(path));
 
-        // リストに追加
-        ImagePathList.Add(path);
+            // リストに追加
+            ImagePathList.Add(path);
 
-        // スクロールビューに登録
-        GameObject Obj = (GameObject)Instantiate (TextPrefabObject, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
-        Obj.transform.parent = ScrollViewObject_Content.transform;
-        Vector3 Pos = Obj.GetComponent<RectTransform>().localPosition;
-        Obj.GetComponent<RectTransform>().localPosition = new Vector3(Pos.x, Pos.y, 1.0f);
-        Obj.GetComponent<RectTransform>().localScale = new Vector3(1.0f, 1.0f, 1.0f);
-        Obj.GetComponent<Text>().text = System.IO.Path.GetFileName(path);
+            // スクロールビューに登録
+            GameObject Obj = (GameObject)Instantiate (TextPrefabObject, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+            Obj.transform.parent = ScrollViewObject_Content.transform;
+            Vector3 Pos = Obj.GetComponent<RectTransform>().localPosition;
+            Obj.GetComponent<RectTransform>().localPosition = new Vector3(Pos.x, Pos.y, 1.0f);
+            Obj.GetComponent<RectTransform>().localScale = new Vector3(1.0f, 1.0f, 1.0f);
+            Obj.GetComponent<Text>().text = System.IO.Path.GetFileName(path);
+        }
     }
 
     // スプライトの作成
